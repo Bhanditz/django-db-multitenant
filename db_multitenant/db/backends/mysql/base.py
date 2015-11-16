@@ -32,10 +32,13 @@ WRAPPED_BACKEND = import_module('django.db.backends.mysql.base')
 
 LOGGER = logging.getLogger('db_multitenant')
 
+
 class DatabaseWrapper(WRAPPED_BACKEND.DatabaseWrapper):
     def __init__(self, *args, **kwargs):
         super(DatabaseWrapper, self).__init__(*args, **kwargs)
         self.threadlocal = MultiTenantThreadlocal()
+        if not self.threadlocal.get_dbname():
+            self.threadlocal.set_dbname(self.settings_dict['NAME'])
 
     def get_threadlocal(self):
         return self.threadlocal

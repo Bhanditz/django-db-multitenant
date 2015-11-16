@@ -63,4 +63,3 @@ class MultiTenantThreadlocal(local):
     def reset(self):
         self.dbname = None
         self.cache_prefix = None
-

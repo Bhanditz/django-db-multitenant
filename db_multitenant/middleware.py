@@ -26,6 +26,7 @@ from django.db import connection
 
 from db_multitenant import utils
 
+
 class MultiTenantMiddleware(object):
     """Should be placed first in your middlewares.
 
