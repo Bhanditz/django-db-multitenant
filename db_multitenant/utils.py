@@ -78,5 +78,5 @@ def get_mongo_db_name():
         mapper = get_mapper()
         db = mapper.get_dbname(req)
     else:
-        db = settings.MODULESTORE['default'].get('DOC_STORE_CONFIG', {}).get('db')
+        db = settings.DOC_STORE_CONFIG.get('db')
     return db
